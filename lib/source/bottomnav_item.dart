@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 
+// bottom navigation item
 class BottomNavItem {
-  final int index;
   final String title;
   final IconData iconData;
-  final Alignment alignment;
+  final IconTheme iconTheme;
 
   BottomNavItem({
-    @required this.index,
     @required this.title,
     @required this.iconData,
-    @required this.alignment,
+    this.iconTheme,
+  });
+}
+
+// theme for each icon of items
+class IconTheme {
+  final double iconSize;
+  final Color iconColor;
+
+  IconTheme({
+    this.iconSize,
+    this.iconColor,
   });
 }

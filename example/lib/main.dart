@@ -6,11 +6,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  var items = <BottomNavItem>[
+    BottomNavItem(title: 'Home', iconData: Icons.home),
+    BottomNavItem(title: 'Profile', iconData: Icons.portrait),
+    BottomNavItem(title: 'Setting', iconData: Icons.search),
+  ];
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -19,7 +24,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Test'),
         ),
-        body: Container(),
+        bottomNavigationBar: BottomAnimation(
+          items: items,
+        ),
       ),
     );
   }
