@@ -10,14 +10,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bottom Navigation Example',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
+        appBar: AppBar(
+          title: Text('Test'),
+        ),
         body: Container(),
-//        bottomNavigationBar: BottomAnimation(),
       ),
     );
   }

@@ -1,6 +1,6 @@
 # example
 
-example application.
+A new Flutter project.
 
 ## Getting Started
 
