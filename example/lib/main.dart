@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bottom_animation/bottom_animation.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: Container(),
-        bottomNavigationBar: null,
+//        bottomNavigationBar: BottomAnimation(),
       ),
     );
   }
