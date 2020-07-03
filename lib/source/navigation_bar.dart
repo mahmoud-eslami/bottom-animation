@@ -109,8 +109,8 @@ class _BottomAnimationState extends State<BottomAnimation> {
       child: Stack(
         children: <Widget>[
           AnimatedAlign(
-            curve: Curves.linearToEaseOut,
-            duration: Duration(milliseconds: 400),
+            curve: Curves.ease,
+            duration: Duration(milliseconds: 700),
             alignment:
                 Alignment(calcuteContainerPosition(widget.selectedIndex), 0),
             child: Container(
@@ -190,31 +190,32 @@ class _BarItemState extends State<BarItem> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-            widget.icon,
-            color: widget.selected ? widget.activeColor : widget.deactiveColor,
-            size: widget.iconSize,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          widget.selected
-              ? AnimatedAlign(
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.ease,
-                  alignment: Alignment(2, 0),
-                  child: Text(
+    return AnimatedContainer(
+      curve: Curves.ease,
+      width: widget.selected ? 100 : 50,
+      duration: Duration(seconds: 1),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              widget.icon,
+              color:
+                  widget.selected ? widget.activeColor : widget.deactiveColor,
+              size: widget.iconSize,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            widget.selected
+                ? Text(
                     widget.title,
                     style: widget.textStyle,
-                  ),
-                )
-              : Container(),
-        ],
+                  )
+                : Container()
+          ],
+        ),
       ),
     );
   }
