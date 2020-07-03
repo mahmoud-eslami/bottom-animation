@@ -39,6 +39,7 @@ class _BottomAnimationState extends State<BottomAnimation> {
   @override
   void initState() {
     listItems = widget.items;
+
     textStyle = widget.textStyle ??
         TextStyle(
           color: Colors.white,
@@ -50,6 +51,7 @@ class _BottomAnimationState extends State<BottomAnimation> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.selectedIndex);
     return Container(
       decoration: BoxDecoration(
         color: widget.backgroundColor,
@@ -61,26 +63,30 @@ class _BottomAnimationState extends State<BottomAnimation> {
       ),
       width: double.infinity,
       height: widget.barHeight,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: listItems.map((item) {
-            var index = listItems.indexOf(item);
-            return GestureDetector(
-              onTap: () => widget.onItemSelect(index),
-              child: BarItem(
-                selected: widget.selectedIndex == index,
-                activeColor: widget.activeIconColor,
-                deactiveColor: widget.deactiveIconColor,
-                icon: item.iconData,
-                title: item.title,
-                iconSize: widget.iconSize,
-                textStyle: textStyle,
-              ),
-            );
-          }).toList(),
-        ),
+      child: Stack(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: listItems.map((item) {
+                var index = listItems.indexOf(item);
+                return GestureDetector(
+                  onTap: () => widget.onItemSelect(index),
+                  child: BarItem(
+                    selected: widget.selectedIndex == index,
+                    activeColor: widget.activeIconColor,
+                    deactiveColor: widget.deactiveIconColor,
+                    icon: item.iconData,
+                    title: item.title,
+                    iconSize: widget.iconSize,
+                    textStyle: textStyle,
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -96,94 +102,54 @@ class BarItem extends StatefulWidget {
   final double iconSize;
   final TextStyle textStyle;
 
-  const BarItem(
-      {Key key,
-      this.icon,
-      this.title,
-      this.selected,
-      this.activeColor,
-      this.deactiveColor,
-      this.iconSize,
-      this.textStyle})
-      : super(key: key);
+  const BarItem({
+    Key key,
+    this.icon,
+    this.title,
+    this.selected,
+    this.activeColor,
+    this.deactiveColor,
+    this.iconSize,
+    this.textStyle,
+  }) : super(key: key);
 
   @override
   _BarItemState createState() => _BarItemState();
 }
 
-class _BarItemState extends State<BarItem> with TickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> _scaleTransitionAnimation;
-  Animation<Alignment> _alignmentIconAnimation;
-  Animation<Alignment> _alignmentTitleAnimation;
-
+class _BarItemState extends State<BarItem> {
   @override
   void initState() {
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    )..forward();
-
-    _scaleTransitionAnimation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        curve: Interval(
-          0.0,
-          1.0,
-          curve: Curves.ease,
-        ),
-        parent: _animationController,
-      ),
-    );
-    _alignmentTitleAnimation = Tween<Alignment>(
-      begin: Alignment(0, 4),
-      end: Alignment(0, 0),
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Interval(
-          0.0,
-          1.0,
-          curve: Curves.ease,
-        ),
-      ),
-    );
     super.initState();
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color:
-            widget.selected ? Colors.white.withOpacity(.1) : Colors.transparent,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
-      ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ScaleTransition(
-              scale: _scaleTransitionAnimation,
-              child: Icon(
-                widget.icon,
-                color:
-                    widget.selected ? widget.activeColor : widget.deactiveColor,
-                size: widget.selected ? widget.iconSize + 10 : widget.iconSize,
-              ),
+            Icon(
+              widget.icon,
+              color:
+                  widget.selected ? widget.activeColor : widget.deactiveColor,
+              size: widget.selected ? widget.iconSize + 10 : widget.iconSize,
             ),
             SizedBox(
               width: 10,
             ),
             widget.selected
-                ? AlignTransition(
-                    alignment: _alignmentTitleAnimation,
-                    child: Text(
-                      widget.title,
-                      style: widget.textStyle,
-                    ),
+                ? Text(
+                    widget.title,
+                    style: widget.textStyle,
                   )
                 : Container(),
           ],
