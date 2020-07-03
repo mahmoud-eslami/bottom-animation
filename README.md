@@ -1,6 +1,6 @@
 # Animated Bottom Navigation
 
-[![pub package](https://img.shields.io/pub/v/bottom_animation?color=green&style=flat-square)](https://pub.dev/packages/bottom_animation)
+[![pub package](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/Screenshot%20from%202020-07-03%2021-53-25.png)
 
 ##### Flutter `package` for `add bottomNavigation` to you application
 
