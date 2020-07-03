@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
     BottomNavItem(title: 'Home', iconData: CupertinoIcons.heart),
     BottomNavItem(title: 'Profile', iconData: CupertinoIcons.person),
     BottomNavItem(title: 'Setting', iconData: CupertinoIcons.search),
-    BottomNavItem(title: 'Test', iconData: CupertinoIcons.bell),
+    BottomNavItem(title: 'tools', iconData: CupertinoIcons.bluetooth),
   ];
 
   var cIndex;
@@ -39,16 +39,23 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: BottomAnimation(
           selectedIndex: cIndex,
           items: items,
-          backgroundColor: Colors.purple[900],
+          backgroundColor: Colors.blueGrey,
           onItemSelect: (value) {
             setState(() {
               cIndex = value;
             });
           },
-          itemHoverColor: Colors.deepPurpleAccent,
-          itemHoverColorOpacity: .3,
-          activeIconColor: Colors.white,
-          deactiveIconColor: Colors.white.withOpacity(.2),
+          itemHoverColor: Colors.white,
+          itemHoverColorOpacity: .9,
+          activeIconColor: Colors.blueGrey,
+          deactiveIconColor: Colors.white.withOpacity(.9),
+          barRadius: 40,
+          textStyle: TextStyle(
+            color: Colors.blueGrey,
+            fontWeight: FontWeight.bold,
+          ),
+          itemHoverWidth: 130,
+          itemHoverBorderRadius: 40,
         ),
       ),
     );
