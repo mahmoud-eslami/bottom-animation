@@ -36,18 +36,17 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text('Test'),
-        ),
         bottomNavigationBar: BottomAnimation(
           selectedIndex: cIndex,
           items: items,
-          backgroundColor: Colors.indigo,
+          backgroundColor: Colors.purple[900],
           onItemSelect: (value) {
             setState(() {
               cIndex = value;
             });
           },
+          itemHoverColor: Colors.deepPurpleAccent,
+          itemHoverColorOpacity: .3,
           activeIconColor: Colors.white,
           deactiveIconColor: Colors.white.withOpacity(.2),
         ),

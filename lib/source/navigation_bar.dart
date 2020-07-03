@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 /// Bottom Navigation Widget.
 class BottomAnimation extends StatefulWidget {
+  // widget parameters
   final int selectedIndex;
   final List<BottomNavItem> items;
   final Color backgroundColor;
@@ -15,6 +16,11 @@ class BottomAnimation extends StatefulWidget {
   final ValueChanged<int> onItemSelect;
   final double barHeight;
   final double barRadius;
+  final Color itemHoverColor;
+  final double itemHoverColorOpacity;
+  final double itemHoverBorderRadius;
+  final double itemHoverWidth;
+  final double itemHoverHeight;
 
   const BottomAnimation({
     Key key,
@@ -24,10 +30,15 @@ class BottomAnimation extends StatefulWidget {
     @required this.deactiveIconColor,
     @required this.backgroundColor,
     @required this.onItemSelect,
+    @required this.itemHoverColor,
     this.iconSize = 30,
     this.textStyle,
     this.barHeight = 80,
     this.barRadius = 0,
+    this.itemHoverBorderRadius = 15,
+    this.itemHoverColorOpacity = .13,
+    this.itemHoverHeight = 55,
+    this.itemHoverWidth = 150,
   }) : super(key: key);
 
   @override
@@ -75,8 +86,8 @@ class _BottomAnimationState extends State<BottomAnimation> {
     textStyle = widget.textStyle ??
         TextStyle(
           color: Colors.white,
-          fontSize: 20.0,
-          fontWeight: FontWeight.w500,
+          fontSize: 18.0,
+          fontWeight: FontWeight.w300,
         );
     super.initState();
   }
@@ -99,16 +110,17 @@ class _BottomAnimationState extends State<BottomAnimation> {
         children: <Widget>[
           AnimatedAlign(
             curve: Curves.linearToEaseOut,
-            duration: Duration(milliseconds: 600),
+            duration: Duration(milliseconds: 400),
             alignment:
                 Alignment(calcuteContainerPosition(widget.selectedIndex), 0),
             child: Container(
-              width: 150,
-              height: 50,
+              width: widget.itemHoverWidth,
+              height: widget.itemHoverHeight,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.13),
+                color: widget.itemHoverColor
+                    .withOpacity(widget.itemHoverColorOpacity),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(30),
+                  Radius.circular(widget.itemHoverBorderRadius),
                 ),
               ),
             ),
@@ -178,29 +190,32 @@ class _BarItemState extends State<BarItem> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          widget.icon,
-          color: widget.selected ? widget.activeColor : widget.deactiveColor,
-          size: widget.selected ? widget.iconSize + 10 : widget.iconSize,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        widget.selected
-            ? AnimatedAlign(
-                duration: Duration(milliseconds: 300),
-                curve: Curves.ease,
-                alignment: Alignment(2, 0),
-                child: Text(
-                  widget.title,
-                  style: widget.textStyle,
-                ),
-              )
-            : Container(),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            widget.icon,
+            color: widget.selected ? widget.activeColor : widget.deactiveColor,
+            size: widget.iconSize,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          widget.selected
+              ? AnimatedAlign(
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.ease,
+                  alignment: Alignment(2, 0),
+                  child: Text(
+                    widget.title,
+                    style: widget.textStyle,
+                  ),
+                )
+              : Container(),
+        ],
+      ),
     );
   }
 }
