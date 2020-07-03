@@ -1,8 +1,8 @@
 name: bottom_animation
-description: Navigation Menu Animation
-version: 0.0.1
-author:
-homepage:
+description: Flutter Bottom Navigation Bar | Animated Navigation Bar
+version: 1.0.0
+author: Mahmoud Eslami <eslamimahmoud98@gmail.com>
+homepage: https://github.com/mahmoud-eslami/bottom_animation
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
