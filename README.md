@@ -4,7 +4,7 @@
 
 ##### Flutter `package` for `add bottomNavigation` to you application
 
-![pic]([https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/Screenshot%20from%202020-07-03%2021-45-00.png](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/Screenshot from 2020-07-03 21-45-00.png)
+![pic](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/Screenshot%20from%202020-07-03%2021-45-00.png)
 
 ### Show case :
 
