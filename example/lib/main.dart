@@ -16,6 +16,7 @@ class _MyAppState extends State<MyApp> {
     BottomNavItem(title: 'Home', iconData: CupertinoIcons.heart),
     BottomNavItem(title: 'Profile', iconData: CupertinoIcons.person),
     BottomNavItem(title: 'Setting', iconData: CupertinoIcons.search),
+    BottomNavItem(title: 'Test', iconData: CupertinoIcons.bell),
   ];
 
   var cIndex;
@@ -34,6 +35,7 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text('Test'),
         ),
