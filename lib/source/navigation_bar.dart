@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bottom_animation/bottom_animation.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +24,7 @@ class BottomAnimation extends StatefulWidget {
     @required this.deactiveIconColor,
     @required this.backgroundColor,
     @required this.onItemSelect,
-    this.iconSize = 25,
+    this.iconSize = 30,
     this.textStyle,
     this.barHeight = 80,
     this.barRadius = 0,
@@ -35,6 +37,36 @@ class BottomAnimation extends StatefulWidget {
 class _BottomAnimationState extends State<BottomAnimation> {
   var textStyle;
   List<BottomNavItem> listItems;
+
+  double calcuteContainerPosition(int index) {
+    //lerp paramter
+    var isLtr = Directionality.of(context) == TextDirection.ltr;
+    var listSize = widget.items.length;
+    var a = 0.0;
+    var b = 0.0;
+    // set sutable count for calcute lerp
+    if (listSize == 0) {
+      a = 0.0;
+      b = 0.0;
+    } else if (listSize == 2) {
+      a = .6;
+      b = .6;
+    } else if (listSize == 3) {
+      a = .8;
+      b = .8;
+    } else if (listSize == 4) {
+      a = .9;
+      b = .9;
+    } else {
+      a = 1;
+      b = 1;
+    }
+    // return calcuted lerp
+    if (isLtr)
+      return lerpDouble(-a, b, index / (listSize - 1));
+    else
+      return lerpDouble(b, -a, index / (listSize - 1));
+  }
 
   @override
   void initState() {
@@ -65,6 +97,22 @@ class _BottomAnimationState extends State<BottomAnimation> {
       height: widget.barHeight,
       child: Stack(
         children: <Widget>[
+          AnimatedAlign(
+            curve: Curves.linearToEaseOut,
+            duration: Duration(milliseconds: 600),
+            alignment:
+                Alignment(calcuteContainerPosition(widget.selectedIndex), 0),
+            child: Container(
+              width: 150,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(.13),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(30),
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
@@ -117,7 +165,7 @@ class BarItem extends StatefulWidget {
   _BarItemState createState() => _BarItemState();
 }
 
-class _BarItemState extends State<BarItem> {
+class _BarItemState extends State<BarItem> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -130,31 +178,29 @@ class _BarItemState extends State<BarItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              widget.icon,
-              color:
-                  widget.selected ? widget.activeColor : widget.deactiveColor,
-              size: widget.selected ? widget.iconSize + 10 : widget.iconSize,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            widget.selected
-                ? Text(
-                    widget.title,
-                    style: widget.textStyle,
-                  )
-                : Container(),
-          ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          widget.icon,
+          color: widget.selected ? widget.activeColor : widget.deactiveColor,
+          size: widget.selected ? widget.iconSize + 10 : widget.iconSize,
         ),
-      ),
+        SizedBox(
+          width: 10,
+        ),
+        widget.selected
+            ? AnimatedAlign(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.ease,
+                alignment: Alignment(2, 0),
+                child: Text(
+                  widget.title,
+                  style: widget.textStyle,
+                ),
+              )
+            : Container(),
+      ],
     );
   }
 }

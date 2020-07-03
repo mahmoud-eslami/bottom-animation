@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
             });
           },
           activeIconColor: Colors.white,
-          deactiveIconColor: Colors.white.withOpacity(.3),
+          deactiveIconColor: Colors.white.withOpacity(.2),
         ),
       ),
     );
