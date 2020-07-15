@@ -21,6 +21,7 @@ class BottomAnimation extends StatefulWidget {
   final double itemHoverBorderRadius;
   final double itemHoverWidth;
   final double itemHoverHeight;
+  final int hoverAlignmentDuration;
 
   const BottomAnimation({
     Key key,
@@ -31,6 +32,7 @@ class BottomAnimation extends StatefulWidget {
     @required this.backgroundColor,
     @required this.onItemSelect,
     @required this.itemHoverColor,
+    this.hoverAlignmentDuration = 700,
     this.iconSize = 30,
     this.textStyle,
     this.barHeight = 80,
@@ -110,7 +112,7 @@ class _BottomAnimationState extends State<BottomAnimation> {
         children: <Widget>[
           AnimatedAlign(
             curve: Curves.ease,
-            duration: Duration(milliseconds: 700),
+            duration: Duration(milliseconds: widget.hoverAlignmentDuration),
             alignment:
                 Alignment(calcuteContainerPosition(widget.selectedIndex), 0),
             child: Container(

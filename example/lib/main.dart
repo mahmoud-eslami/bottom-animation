@@ -13,10 +13,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var items = <BottomNavItem>[
-    BottomNavItem(title: 'Home', iconData: CupertinoIcons.heart),
-    BottomNavItem(title: 'Profile', iconData: CupertinoIcons.person),
-    BottomNavItem(title: 'Setting', iconData: CupertinoIcons.search),
-    BottomNavItem(title: 'tools', iconData: CupertinoIcons.bluetooth),
+    BottomNavItem(title: 'Home', iconData: Icons.home),
+    BottomNavItem(title: 'Profile', iconData: Icons.account_circle),
+    BottomNavItem(title: 'Search', iconData: Icons.search),
   ];
 
   var cIndex;
@@ -39,23 +38,24 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: BottomAnimation(
           selectedIndex: cIndex,
           items: items,
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Colors.cyan,
           onItemSelect: (value) {
             setState(() {
               cIndex = value;
             });
           },
           itemHoverColor: Colors.white,
-          itemHoverColorOpacity: .9,
-          activeIconColor: Colors.blueGrey,
-          deactiveIconColor: Colors.white.withOpacity(.9),
-          barRadius: 40,
+          itemHoverColorOpacity: .2,
+          activeIconColor: Colors.black,
+          deactiveIconColor: Colors.black38,
+          barRadius: 20,
           textStyle: TextStyle(
-            color: Colors.blueGrey,
+            color: Colors.black,
             fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
-          itemHoverWidth: 130,
-          itemHoverBorderRadius: 40,
+          itemHoverWidth: 135,
+          itemHoverBorderRadius: 20,
         ),
       ),
     );
