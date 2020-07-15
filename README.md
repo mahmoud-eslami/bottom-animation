@@ -49,23 +49,24 @@ import 'package:bottom_animation/bottom_animation.dart';
 
 ### Widget parameters :
 
-|         name          |        type         |                description                 |                        default_value                         |
-| :-------------------: | :-----------------: | :----------------------------------------: | :----------------------------------------------------------: |
-|     selectedIndex     |         int         |           index of selected item           |                              -                               |
-|         items         | List<BottomNavItem> |       list of bottom navigition item       |                              -                               |
-|    backgroundColor    |        Color        |   background color of bottom navigation    |                              -                               |
-|    activeIconColor    |        Color        |           color of selected item           |                              -                               |
-|   deactiveIconColor   |        Color        |          color of unselected item          |                              -                               |
-|       iconSize        |       double        |           size of BottomNavIcon            |                              30                              |
-|       textStyle       |      TextStyle      | text style for title of each BottomNavItem | TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w300) |
-|     onItemSelect      |  ValueChanged<int>  |                     -                      |                              -                               |
-|       barHeight       |       double        |          bottom navigation height          |                              80                              |
-|       barRadius       |       double        |      bottom navigation border radius       |                              0                               |
-|    itemHoverColor     |        Color        |       background color of each item        |                              -                               |
-| itemHoverColorOpacity |       double        |                     -                      |                              13                              |
-| itemHoverBorderRadius |       double        |                     -                      |                              15                              |
-|    itemHoverWidth     |       double        |                     -                      |                             150                              |
-|    itemHoverHeight    |       double        |                     -                      |                              55                              |
+|          name          |        type         |                description                 |                        default_value                         |
+| :--------------------: | :-----------------: | :----------------------------------------: | :----------------------------------------------------------: |
+|     selectedIndex      |         int         |           index of selected item           |                              -                               |
+| hoverAlignmentDuration |         int         |      controll movement speed of hover      |                      700(milliesecond)                       |
+|         items          | List<BottomNavItem> |       list of bottom navigition item       |                              -                               |
+|    backgroundColor     |        Color        |   background color of bottom navigation    |                              -                               |
+|    activeIconColor     |        Color        |           color of selected item           |                              -                               |
+|   deactiveIconColor    |        Color        |          color of unselected item          |                              -                               |
+|        iconSize        |       double        |           size of BottomNavIcon            |                              30                              |
+|       textStyle        |      TextStyle      | text style for title of each BottomNavItem | TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w300) |
+|      onItemSelect      |  ValueChanged<int>  |                     -                      |                              -                               |
+|       barHeight        |       double        |          bottom navigation height          |                              80                              |
+|       barRadius        |       double        |      bottom navigation border radius       |                              0                               |
+|     itemHoverColor     |        Color        |       background color of each item        |                              -                               |
+| itemHoverColorOpacity  |       double        |                     -                      |                              13                              |
+| itemHoverBorderRadius  |       double        |                     -                      |                              15                              |
+|     itemHoverWidth     |       double        |                     -                      |                             150                              |
+|    itemHoverHeight     |       double        |                     -                      |                              55                              |
 
 ### BottomNavItem :
 

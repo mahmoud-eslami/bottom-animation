@@ -9,3 +9,8 @@
 ## [1.0.2] - 2020-07-10.
 
  - Description updated.
+
+ ## [1.1.0] - 2020-07-15
+
+ - Add hoverDuration field to widget constractor .
+    - you can control movement speed .
