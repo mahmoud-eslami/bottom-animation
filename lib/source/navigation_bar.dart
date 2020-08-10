@@ -96,7 +96,6 @@ class _BottomAnimationState extends State<BottomAnimation> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.selectedIndex);
     return Container(
       decoration: BoxDecoration(
         color: widget.backgroundColor,
