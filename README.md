@@ -6,6 +6,10 @@
 
 ![pic](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/BOTTOM%20ANIMATION.png)
 
+## Contribution
+
+### - Your Pull Requests are welcome 🥳🙏.
+
 ### Show case :
 
 |                     Flat Navigation Bar Custom widget                      |                      With border radius Custom Widget                     |                           Curved with custom widget                           |
@@ -78,11 +82,6 @@ import 'package:bottom_animation/bottom_animation.dart';
 |  title   |  String  |
 | iconData | IconData |
 
-
-
-## Contribution
-
-### - Your Pull Requests are welcome 🥳🙏.
 
 
 
