@@ -138,7 +138,8 @@ class _BottomAnimationState extends State<BottomAnimation> {
                     selected: widget.selectedIndex == index,
                     activeColor: widget.activeIconColor,
                     deactiveColor: widget.deactiveIconColor,
-                    icon: item.iconData,
+                    widget: item.widget,
+                    iconData: item.iconData,
                     title: item.title,
                     iconSize: widget.iconSize,
                     textStyle: textStyle,
@@ -155,7 +156,8 @@ class _BottomAnimationState extends State<BottomAnimation> {
 
 /// Each item in Bottom Navigation
 class BarItem extends StatefulWidget {
-  final IconData icon;
+  final Widget widget;
+  final IconData iconData;
   final String title;
   final bool selected;
   final Color activeColor;
@@ -165,7 +167,8 @@ class BarItem extends StatefulWidget {
 
   const BarItem({
     Key key,
-    this.icon,
+    this.widget,
+    this.iconData,
     this.title,
     this.selected,
     this.activeColor,
@@ -200,12 +203,14 @@ class _BarItemState extends State<BarItem> with TickerProviderStateMixin {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
-              widget.icon,
-              color:
-                  widget.selected ? widget.activeColor : widget.deactiveColor,
-              size: widget.iconSize,
-            ),
+            widget.widget ??
+                Icon(
+                  widget.iconData,
+                  color: widget.selected
+                      ? widget.activeColor
+                      : widget.deactiveColor,
+                  size: widget.iconSize,
+                ),
             SizedBox(
               width: 10,
             ),

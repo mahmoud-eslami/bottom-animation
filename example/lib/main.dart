@@ -13,9 +13,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var items = <BottomNavItem>[
-    BottomNavItem(title: 'Home', iconData: Icons.home),
-    BottomNavItem(title: 'Profile', iconData: Icons.account_circle),
-    BottomNavItem(title: 'Search', iconData: Icons.search),
+    BottomNavItem(
+        title: 'logo',
+        widget: Image.asset(
+          'assets/images/logo.png',
+          width: 30,
+        )),
+    BottomNavItem(
+        title: 'profile',
+        widget: Image.asset('assets/images/profilen.png', width: 30)),
+    BottomNavItem(
+        title: 'star',
+        widget: Image.asset('assets/images/star.png', width: 30)),
   ];
 
   var cIndex;
@@ -38,24 +47,24 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: BottomAnimation(
           selectedIndex: cIndex,
           items: items,
-          backgroundColor: Colors.cyan,
+          backgroundColor: Color(0xffea8c55),
           onItemSelect: (value) {
             setState(() {
               cIndex = value;
             });
           },
-          itemHoverColor: Colors.white,
-          itemHoverColorOpacity: .2,
+          itemHoverColor: Color(0xfff5dd90),
+          itemHoverColorOpacity: .5,
           activeIconColor: Colors.black,
           deactiveIconColor: Colors.black38,
-          barRadius: 20,
+          barRadius: 30,
           textStyle: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
           itemHoverWidth: 135,
-          itemHoverBorderRadius: 20,
+          itemHoverBorderRadius: 30,
         ),
       ),
     );
