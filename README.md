@@ -10,7 +10,7 @@
 
 |                     Flat Navigation Bar                      |                      With border radius                      |                           Dark One                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![purpule](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/purple-showCase.gif) | ![blue_gray](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker.gif) | ![dark](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/black-showCase.gif) |
+| ![purpule](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/purple-showCase.gif) | ![blue_grayy](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker.gif) | ![dark](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/black-showCase.gif) |
 
 
 
