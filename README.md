@@ -4,10 +4,13 @@
 
 ##### Flutter `package` for `add bottomNavigation` to your application
 
-![pic](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/Screenshot%20from%202020-07-03%2021-53-25.png)
+![pic](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/BOTTOM%20ANIMATION.png)
 
 ### Show case :
 
+|                     Flat Navigation Bar Custom widget                      |                      With border radius Custom Widget                     |                           Curved with custom widget                           |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![green](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker3.gif) | ![pink](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(1).gif) | ![orange](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(2).gif) |
 |                     Flat Navigation Bar                      |                      With border radius                      |                           Dark One                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![purpule](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/purple-showCase.gif) | ![blue_grayy](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker.gif) | ![dark](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/black-showCase.gif) |
