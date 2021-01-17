@@ -14,3 +14,7 @@
 
  - Add hoverDuration field to widget constractor .
     - you can control movement speed .
+
+ ## [1.2.0] - 2020-07-15
+
+ - Now you can use both iconData and widget for items in bottomNavigation.
