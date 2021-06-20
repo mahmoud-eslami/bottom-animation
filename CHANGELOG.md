@@ -18,3 +18,7 @@
  ## [1.2.0] - 2020-07-15
 
  - Now you can use both iconData and widget for items in bottomNavigation.
+
+ ## [1.2.1] - 2021-06-20
+
+ - Null safety added
