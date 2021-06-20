@@ -10,9 +10,9 @@ class BottomAnimation extends StatefulWidget {
   final List<BottomNavItem> items;
   final Color backgroundColor;
   final Color activeIconColor;
-  final Color deactiveIconColor;
+  final Color deActiveIconColor;
   final double iconSize;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
   final ValueChanged<int> onItemSelect;
   final double barHeight;
   final double barRadius;
@@ -24,14 +24,14 @@ class BottomAnimation extends StatefulWidget {
   final int hoverAlignmentDuration;
 
   const BottomAnimation({
-    Key key,
-    @required this.selectedIndex,
-    @required this.items,
-    @required this.activeIconColor,
-    @required this.deactiveIconColor,
-    @required this.backgroundColor,
-    @required this.onItemSelect,
-    @required this.itemHoverColor,
+    Key? key,
+    required this.selectedIndex,
+    required this.items,
+    required this.activeIconColor,
+    required this.deActiveIconColor,
+    required this.backgroundColor,
+    required this.onItemSelect,
+    required this.itemHoverColor,
     this.hoverAlignmentDuration = 700,
     this.iconSize = 30,
     this.textStyle,
@@ -49,15 +49,15 @@ class BottomAnimation extends StatefulWidget {
 
 class _BottomAnimationState extends State<BottomAnimation> {
   var textStyle;
-  List<BottomNavItem> listItems;
+  late List<BottomNavItem> listItems;
 
-  double calcuteContainerPosition(int index) {
-    //lerp paramter
+  double calculateContainerPosition(int index) {
+    //lerp parameter
     var isLtr = Directionality.of(context) == TextDirection.ltr;
     var listSize = widget.items.length;
     var a = 0.0;
     var b = 0.0;
-    // set sutable count for calcute lerp
+    // set suitable count for calculate lerp
     if (listSize == 0) {
       a = 0.0;
       b = 0.0;
@@ -74,11 +74,11 @@ class _BottomAnimationState extends State<BottomAnimation> {
       a = 1;
       b = 1;
     }
-    // return calcuted lerp
+    // return calculated lerp
     if (isLtr)
-      return lerpDouble(-a, b, index / (listSize - 1));
+      return lerpDouble(-a, b, index / (listSize - 1))!;
     else
-      return lerpDouble(b, -a, index / (listSize - 1));
+      return lerpDouble(b, -a, index / (listSize - 1))!;
   }
 
   @override
@@ -112,14 +112,12 @@ class _BottomAnimationState extends State<BottomAnimation> {
           AnimatedAlign(
             curve: Curves.ease,
             duration: Duration(milliseconds: widget.hoverAlignmentDuration),
-            alignment:
-                Alignment(calcuteContainerPosition(widget.selectedIndex), 0),
+            alignment: Alignment(calculateContainerPosition(widget.selectedIndex), 0),
             child: Container(
               width: widget.itemHoverWidth,
               height: widget.itemHoverHeight,
               decoration: BoxDecoration(
-                color: widget.itemHoverColor
-                    .withOpacity(widget.itemHoverColorOpacity),
+                color: widget.itemHoverColor.withOpacity(widget.itemHoverColorOpacity),
                 borderRadius: BorderRadius.all(
                   Radius.circular(widget.itemHoverBorderRadius),
                 ),
@@ -137,7 +135,7 @@ class _BottomAnimationState extends State<BottomAnimation> {
                   child: BarItem(
                     selected: widget.selectedIndex == index,
                     activeColor: widget.activeIconColor,
-                    deactiveColor: widget.deactiveIconColor,
+                    deActiveColor: widget.deActiveIconColor,
                     widget: item.widget,
                     iconData: item.iconData,
                     title: item.title,
@@ -156,25 +154,25 @@ class _BottomAnimationState extends State<BottomAnimation> {
 
 /// Each item in Bottom Navigation
 class BarItem extends StatefulWidget {
-  final Widget widget;
-  final IconData iconData;
+  final Widget? widget;
+  final IconData? iconData;
   final String title;
   final bool selected;
   final Color activeColor;
-  final Color deactiveColor;
+  final Color deActiveColor;
   final double iconSize;
   final TextStyle textStyle;
 
   const BarItem({
-    Key key,
+    Key? key,
     this.widget,
     this.iconData,
-    this.title,
-    this.selected,
-    this.activeColor,
-    this.deactiveColor,
-    this.iconSize,
-    this.textStyle,
+    required this.title,
+    required this.selected,
+    required this.activeColor,
+    required this.deActiveColor,
+    required this.iconSize,
+    required this.textStyle,
   }) : super(key: key);
 
   @override
@@ -206,9 +204,7 @@ class _BarItemState extends State<BarItem> with TickerProviderStateMixin {
             widget.widget ??
                 Icon(
                   widget.iconData,
-                  color: widget.selected
-                      ? widget.activeColor
-                      : widget.deactiveColor,
+                  color: widget.selected ? widget.activeColor : widget.deActiveColor,
                   size: widget.iconSize,
                 ),
             SizedBox(

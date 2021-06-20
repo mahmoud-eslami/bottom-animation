@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 class BottomNavItem {
   final String title;
   final Widget widget;
-  final IconData iconData;
+  final IconData? iconData;
 
   BottomNavItem({
-    @required this.title,
-    this.widget,
+    required this.title,
+    required this.widget,
     this.iconData,
-  }) : assert(widget != null || iconData != null);
+  });
 }

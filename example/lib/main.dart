@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
           itemHoverColor: Color(0xfff5dd90),
           itemHoverColorOpacity: .5,
           activeIconColor: Colors.black,
-          deactiveIconColor: Colors.black38,
+          deActiveIconColor: Colors.black38,
           barRadius: 30,
           textStyle: TextStyle(
             color: Colors.black,
