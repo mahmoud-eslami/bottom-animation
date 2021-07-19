@@ -15,8 +15,8 @@
 |                     Flat Navigation Bar Custom widget                      |                      With border radius Custom Widget                     |                           Curved with custom widget                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![green](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker3.gif) | ![pink](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(1).gif) | ![orange](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(2).gif) |
-|                     Flat Navigation Bar                      |                      With border radius                      |                           Dark One                           |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|  |  |  |
+|                     Flat Navigation Bar                      |                      With border radius                      |                           Dark One               
 | ![purpule](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/purple-showCase.gif) | ![blue_grayy](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker.gif) | ![dark](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/black-showCase.gif) |
 
 
