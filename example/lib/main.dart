@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:bottom_animation/bottom_animation.dart';
 
 void main() {
@@ -45,19 +44,21 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: Colors.white,
         bottomNavigationBar: BottomAnimation(
+          isFloating: true,
           selectedIndex: cIndex,
           items: items,
-          backgroundColor: Color(0xffea8c55),
+          backgroundColor: Color.fromARGB(255, 165, 229, 123),
           onItemSelect: (value) {
             setState(() {
               cIndex = value;
             });
           },
-          itemHoverColor: Color(0xfff5dd90),
+          itemHoverColor: Color.fromARGB(255, 34, 158, 56),
           itemHoverColorOpacity: .5,
           activeIconColor: Colors.black,
           deActiveIconColor: Colors.black38,
           barRadius: 30,
+          customBorderRadius: BorderRadius.circular(30),
           textStyle: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,

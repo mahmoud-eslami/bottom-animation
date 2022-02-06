@@ -16,12 +16,16 @@ class BottomAnimation extends StatefulWidget {
   final ValueChanged<int> onItemSelect;
   final double barHeight;
   final double barRadius;
+  // todo
+  final BorderRadiusGeometry? customBorderRadius;
   final Color itemHoverColor;
   final double itemHoverColorOpacity;
   final double itemHoverBorderRadius;
   final double itemHoverWidth;
   final double itemHoverHeight;
   final int hoverAlignmentDuration;
+  // todo
+  final bool isFloating;
 
   const BottomAnimation({
     Key? key,
@@ -32,6 +36,7 @@ class BottomAnimation extends StatefulWidget {
     required this.backgroundColor,
     required this.onItemSelect,
     required this.itemHoverColor,
+    this.customBorderRadius,
     this.hoverAlignmentDuration = 700,
     this.iconSize = 30,
     this.textStyle,
@@ -41,6 +46,7 @@ class BottomAnimation extends StatefulWidget {
     this.itemHoverColorOpacity = .13,
     this.itemHoverHeight = 55,
     this.itemHoverWidth = 150,
+    this.isFloating = false,
   }) : super(key: key);
 
   @override
@@ -96,57 +102,64 @@ class _BottomAnimationState extends State<BottomAnimation> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: widget.backgroundColor,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(
-            widget.barRadius,
-          ),
+    return Padding(
+      padding: EdgeInsets.fromLTRB(widget.isFloating ? 15 : 0, 0,
+          widget.isFloating ? 15 : 0, widget.isFloating ? 20 : 0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: widget.backgroundColor,
+          borderRadius: widget.customBorderRadius ??
+              BorderRadius.vertical(
+                top: Radius.circular(
+                  widget.barRadius,
+                ),
+              ),
         ),
-      ),
-      width: double.infinity,
-      height: widget.barHeight,
-      child: Stack(
-        children: <Widget>[
-          AnimatedAlign(
-            curve: Curves.ease,
-            duration: Duration(milliseconds: widget.hoverAlignmentDuration),
-            alignment: Alignment(calculateContainerPosition(widget.selectedIndex), 0),
-            child: Container(
-              width: widget.itemHoverWidth,
-              height: widget.itemHoverHeight,
-              decoration: BoxDecoration(
-                color: widget.itemHoverColor.withOpacity(widget.itemHoverColorOpacity),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(widget.itemHoverBorderRadius),
+        width: double.infinity,
+        height: widget.barHeight,
+        child: Stack(
+          children: <Widget>[
+            AnimatedAlign(
+              curve: Curves.ease,
+              duration: Duration(milliseconds: widget.hoverAlignmentDuration),
+              alignment: Alignment(
+                  calculateContainerPosition(widget.selectedIndex), 0),
+              child: Container(
+                width: widget.itemHoverWidth,
+                height: widget.itemHoverHeight,
+                decoration: BoxDecoration(
+                  color: widget.itemHoverColor
+                      .withOpacity(widget.itemHoverColorOpacity),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(widget.itemHoverBorderRadius),
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: listItems.map((item) {
-                var index = listItems.indexOf(item);
-                return GestureDetector(
-                  onTap: () => widget.onItemSelect(index),
-                  child: BarItem(
-                    selected: widget.selectedIndex == index,
-                    activeColor: widget.activeIconColor,
-                    deActiveColor: widget.deActiveIconColor,
-                    widget: item.widget,
-                    iconData: item.iconData,
-                    title: item.title,
-                    iconSize: widget.iconSize,
-                    textStyle: textStyle,
-                  ),
-                );
-              }).toList(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: listItems.map((item) {
+                  var index = listItems.indexOf(item);
+                  return GestureDetector(
+                    onTap: () => widget.onItemSelect(index),
+                    child: BarItem(
+                      selected: widget.selectedIndex == index,
+                      activeColor: widget.activeIconColor,
+                      deActiveColor: widget.deActiveIconColor,
+                      widget: item.widget,
+                      iconData: item.iconData,
+                      title: item.title,
+                      iconSize: widget.iconSize,
+                      textStyle: textStyle,
+                    ),
+                  );
+                }).toList(),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -204,7 +217,9 @@ class _BarItemState extends State<BarItem> with TickerProviderStateMixin {
             widget.widget ??
                 Icon(
                   widget.iconData,
-                  color: widget.selected ? widget.activeColor : widget.deActiveColor,
+                  color: widget.selected
+                      ? widget.activeColor
+                      : widget.deActiveColor,
                   size: widget.iconSize,
                 ),
             SizedBox(
