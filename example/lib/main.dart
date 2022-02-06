@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_animation/bottom_animation.dart';
+import 'package:ionicons/ionicons.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,17 +14,33 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var items = <BottomNavItem>[
     BottomNavItem(
-        title: 'logo',
-        widget: Image.asset(
-          'assets/images/logo.png',
-          width: 30,
-        )),
+      title: 'logo',
+      widget: Icon(
+        Ionicons.logo_alipay,
+        color: Colors.white,
+      ),
+    ),
     BottomNavItem(
-        title: 'profile',
-        widget: Image.asset('assets/images/profilen.png', width: 30)),
+      title: 'profile',
+      widget: Icon(
+        Ionicons.at_circle_outline,
+        color: Colors.white,
+      ),
+    ),
     BottomNavItem(
-        title: 'star',
-        widget: Image.asset('assets/images/star.png', width: 30)),
+      title: 'star',
+      widget: Icon(
+        Ionicons.star,
+        color: Colors.white,
+      ),
+    ),
+    BottomNavItem(
+      title: 'star',
+      widget: Icon(
+        Ionicons.star,
+        color: Colors.white,
+      ),
+    ),
   ];
 
   var cIndex;
@@ -47,24 +64,24 @@ class _MyAppState extends State<MyApp> {
           isFloating: true,
           selectedIndex: cIndex,
           items: items,
-          backgroundColor: Color.fromARGB(255, 165, 229, 123),
+          backgroundColor: Color.fromARGB(255, 196, 134, 207),
           onItemSelect: (value) {
             setState(() {
               cIndex = value;
             });
           },
-          itemHoverColor: Color.fromARGB(255, 34, 158, 56),
+          itemHoverColor: Color.fromARGB(255, 105, 6, 100),
           itemHoverColorOpacity: .5,
           activeIconColor: Colors.black,
           deActiveIconColor: Colors.black38,
           barRadius: 30,
-          customBorderRadius: BorderRadius.circular(30),
+          customBorderRadius: BorderRadius.circular(40),
           textStyle: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
-          itemHoverWidth: 135,
+          itemHoverWidth: 110,
           itemHoverBorderRadius: 30,
         ),
       ),

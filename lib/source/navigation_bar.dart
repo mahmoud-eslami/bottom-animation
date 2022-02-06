@@ -57,28 +57,26 @@ class _BottomAnimationState extends State<BottomAnimation> {
   var textStyle;
   late List<BottomNavItem> listItems;
 
-  double calculateContainerPosition(int index) {
+  double calculateContainerPosition(int index, BuildContext context) {
     //lerp parameter
     var isLtr = Directionality.of(context) == TextDirection.ltr;
     var listSize = widget.items.length;
     var a = 0.0;
     var b = 0.0;
+    Orientation orientation = MediaQuery.of(context).orientation;
     // set suitable count for calculate lerp
-    if (listSize == 0) {
-      a = 0.0;
-      b = 0.0;
-    } else if (listSize == 2) {
-      a = .6;
-      b = .6;
+    if (listSize == 2) {
+      a = .6 - ((orientation == Orientation.portrait) ? 0 : .1);
+      b = .6 - ((orientation == Orientation.portrait) ? 0 : .1);
     } else if (listSize == 3) {
-      a = .8;
-      b = .8;
+      a = .8 - ((orientation == Orientation.portrait) ? 0 : .1);
+      b = .8 - ((orientation == Orientation.portrait) ? 0 : .1);
     } else if (listSize == 4) {
-      a = .9;
-      b = .9;
+      a = .9 - ((orientation == Orientation.portrait) ? 0 : .1);
+      b = .9 - ((orientation == Orientation.portrait) ? 0 : .1);
     } else {
-      a = 1;
-      b = 1;
+      a = 1 - ((orientation == Orientation.portrait) ? 0 : .15);
+      b = 1 - ((orientation == Orientation.portrait) ? 0 : .15);
     }
     // return calculated lerp
     if (isLtr)
@@ -123,7 +121,7 @@ class _BottomAnimationState extends State<BottomAnimation> {
               curve: Curves.ease,
               duration: Duration(milliseconds: widget.hoverAlignmentDuration),
               alignment: Alignment(
-                  calculateContainerPosition(widget.selectedIndex), 0),
+                  calculateContainerPosition(widget.selectedIndex, context), 0),
               child: Container(
                 width: widget.itemHoverWidth,
                 height: widget.itemHoverHeight,
