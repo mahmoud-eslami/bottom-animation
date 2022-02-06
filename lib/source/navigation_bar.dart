@@ -21,7 +21,6 @@ class BottomAnimation extends StatefulWidget {
   final Color itemHoverColor;
   final double itemHoverColorOpacity;
   final double itemHoverBorderRadius;
-  final double itemHoverWidth;
   final double itemHoverHeight;
   final int hoverAlignmentDuration;
   // todo
@@ -45,7 +44,6 @@ class BottomAnimation extends StatefulWidget {
     this.itemHoverBorderRadius = 15,
     this.itemHoverColorOpacity = .13,
     this.itemHoverHeight = 55,
-    this.itemHoverWidth = 150,
     this.isFloating = false,
   }) : super(key: key);
 
@@ -55,6 +53,7 @@ class BottomAnimation extends StatefulWidget {
 
 class _BottomAnimationState extends State<BottomAnimation> {
   var textStyle;
+  var itemHoverWidth = 110.0;
   late List<BottomNavItem> listItems;
 
   double calculateContainerPosition(int index, BuildContext context) {
@@ -63,26 +62,31 @@ class _BottomAnimationState extends State<BottomAnimation> {
     var listSize = widget.items.length;
     var a = 0.0;
     var b = 0.0;
+    var lerpTempValue = 0.0;
     Orientation orientation = MediaQuery.of(context).orientation;
     // set suitable count for calculate lerp
     if (listSize == 2) {
+      lerpTempValue = .9;
       a = .6 - ((orientation == Orientation.portrait) ? 0 : .1);
       b = .6 - ((orientation == Orientation.portrait) ? 0 : .1);
     } else if (listSize == 3) {
+      lerpTempValue = .9;
       a = .8 - ((orientation == Orientation.portrait) ? 0 : .1);
       b = .8 - ((orientation == Orientation.portrait) ? 0 : .1);
     } else if (listSize == 4) {
+      lerpTempValue = .8;
       a = .9 - ((orientation == Orientation.portrait) ? 0 : .1);
       b = .9 - ((orientation == Orientation.portrait) ? 0 : .1);
     } else {
+      lerpTempValue = .7;
       a = 1 - ((orientation == Orientation.portrait) ? 0 : .15);
       b = 1 - ((orientation == Orientation.portrait) ? 0 : .15);
     }
     // return calculated lerp
     if (isLtr)
-      return lerpDouble(-a, b, index / (listSize - 1))!;
+      return lerpDouble(-a, b, index / (listSize - lerpTempValue))!;
     else
-      return lerpDouble(b, -a, index / (listSize - 1))!;
+      return lerpDouble(b, -a, index / (listSize - lerpTempValue))!;
   }
 
   @override
@@ -123,7 +127,7 @@ class _BottomAnimationState extends State<BottomAnimation> {
               alignment: Alignment(
                   calculateContainerPosition(widget.selectedIndex, context), 0),
               child: Container(
-                width: widget.itemHoverWidth,
+                width: itemHoverWidth,
                 height: widget.itemHoverHeight,
                 decoration: BoxDecoration(
                   color: widget.itemHoverColor

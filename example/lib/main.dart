@@ -28,16 +28,23 @@ class _MyAppState extends State<MyApp> {
       ),
     ),
     BottomNavItem(
-      title: 'star',
+      title: 'profile',
       widget: Icon(
-        Ionicons.star,
+        Ionicons.at_circle_outline,
         color: Colors.white,
       ),
     ),
     BottomNavItem(
-      title: 'star',
+      title: 'profile',
       widget: Icon(
-        Ionicons.star,
+        Ionicons.at_circle_outline,
+        color: Colors.white,
+      ),
+    ),
+    BottomNavItem(
+      title: 'profile',
+      widget: Icon(
+        Ionicons.at_circle_outline,
         color: Colors.white,
       ),
     ),
@@ -81,7 +88,6 @@ class _MyAppState extends State<MyApp> {
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
-          itemHoverWidth: 110,
           itemHoverBorderRadius: 30,
         ),
       ),
