@@ -1,149 +1,34 @@
+![pic](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/BOTTOM%20ANIMATION.png)
+
 # Animated Bottom Navigation
 
 [![pub package](https://img.shields.io/pub/v/bottom_animation?color=green&style=flat-square)](https://pub.dev/packages/bottom_animation)
 
-##### Flutter `package` for `add bottomNavigation` to your application
+A Flutter package for displaying a beautiful bottom navigation in your application.
 
-![pic](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/BOTTOM%20ANIMATION.png)
+## How to use :
+Check here [How-To-Check](https://github.com/mahmoud-eslami/bottom-animation/blob/master/HOWTOUSE.md) 
 
-## Contribution
+## Contributions:
 
-### - Your Pull Requests are welcome 🥳🙏.
+Bottom animation is an open source project and we welcome contributions from the community. If you want to contribute, please follow these guidelines:
 
-### Show case :
+- Create an issue describing the change you want to make.
+- Fork the repository and make your changes.
+- Submit a pull request with a clear explanation of your changes.
 
-|                     Flat Navigation Bar Custom widget                      |                      With border radius Custom Widget                     |                           Curved with custom widget                           |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![green](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker3.gif) | ![pink](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(1).gif) | ![orange](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(2).gif) |
-|  |  |  |
-|                     Flat Navigation Bar                      |                      With border radius                      |                           Dark One               
-| ![purpule](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/purple-showCase.gif) | ![blue_grayy](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker.gif) | ![dark](https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/black-showCase.gif) |
+Thank you for considering contributing to Bottom animation!
 
+## License:
 
+Bottom animation is licensed under the MIT License. See [LICENSE](https://github.com/mahmoud-eslami/bottom-animation/blob/master/LICENSE) for more information.
 
-### How to use :
+## Show case :
 
-#### 1. Depend on it
-
-Add this to your package's pubspec.yaml file:
-
-```yaml
-dependencies:
-  bottom_animation: ^<last_version>
-```
-
-#### 2. Install it
-
-You can install packages from the command line:
-
-with Flutter:
-
-```shell
-$ flutter pub get
-```
-
-Alternatively, your editor might support `flutter pub get`. Check the docs for your editor to learn more.
-
-#### 3. Import it
-
-Now in your Dart code, you can use:
-
-```dart
-import 'package:bottom_animation/bottom_animation.dart';
-```
-
-
-
-### Widget parameters :
-
-|          name          |        type         |                description                 |                        default_value                         |
-| :--------------------: | :-----------------: | :----------------------------------------: | :----------------------------------------------------------: |
-|     selectedIndex      |         int         |           index of selected item           |                              -                               |
-| hoverAlignmentDuration |         int         |      controll movement speed of hover      |                      700(milliesecond)                       |
-|         items          | List<BottomNavItem> |       list of bottom navigition item       |                              -                               |
-|    backgroundColor     |        Color        |   background color of bottom navigation    |                              -                               |
-|    activeIconColor     |        Color        |           color of selected item           |                              -                               |
-|   deactiveIconColor    |        Color        |          color of unselected item          |                              -                               |
-|        iconSize        |       double        |           size of BottomNavIcon            |                              30                              |
-|       textStyle        |      TextStyle      | text style for title of each BottomNavItem | TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w300) |
-|      onItemSelect      |  ValueChanged<int>  |                     -                      |                              -                               |
-|       barHeight        |       double        |          bottom navigation height          |                              80                              |
-|       barRadius        |       double        |      bottom navigation border radius       |                              0                               |
-|     itemHoverColor     |        Color        |       background color of each item        |                              -                               |
-| itemHoverColorOpacity  |       double        |                     -                      |                              13                              |
-| itemHoverBorderRadius  |       double        |                     -                      |                              15                              |
-|     itemHoverWidth     |       double        |                     -                      |                             150                              |
-|    itemHoverHeight     |       double        |                     -                      |                              55                              |
-
-### BottomNavItem :
-
-|   name   |   type   |
-| :------: | :------: |
-|  title   |  String  |
-| iconData | IconData |
-
-
-
-
-### example :
-
-```dart
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var items = <BottomNavItem>[
-    BottomNavItem(title: 'Home', iconData: CupertinoIcons.heart),
-    BottomNavItem(title: 'Profile', iconData: CupertinoIcons.person),
-    BottomNavItem(title: 'Setting', iconData: CupertinoIcons.search),
-    BottomNavItem(title: 'tools', iconData: CupertinoIcons.bluetooth),
-  ];
-
-  var cIndex;
-  @override
-  void initState() {
-    cIndex = 0;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'example',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        bottomNavigationBar: BottomAnimation(
-          selectedIndex: cIndex,
-          items: items,
-          backgroundColor: Colors.blueGrey,
-          onItemSelect: (value) {
-            setState(() {
-              cIndex = value;
-            });
-          },
-          itemHoverColor: Colors.white,
-          itemHoverColorOpacity: .9,
-          activeIconColor: Colors.blueGrey,
-          deactiveIconColor: Colors.white.withOpacity(.9),
-          barRadius: 40,
-          textStyle: TextStyle(
-            color: Colors.blueGrey,
-            fontWeight: FontWeight.bold,
-          ),
-          itemHoverWidth: 130,
-          itemHoverBorderRadius: 40,
-        ),
-      ),
-    );
-  }
-}
-```
-
-
-
+<p align="center">
+<img src="https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker3.gif" width="160"> <img src="https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(1).gif" width="160">
+<img src="https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker%20(2).gif" width="160">
+<img src="https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/purple-showCase.gif" width="160">
+<img src="https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/ezgif.com-gif-maker.gif" width="160">
+<img src="https://github.com/mahmoud-eslami/bottom_animation/blob/master/files/black-showCase.gif" width="160">
+</p>
