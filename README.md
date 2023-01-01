@@ -5,7 +5,7 @@
 A Flutter package for displaying a beautiful bottom navigation in your application.
 
 ## How to use :
-Check here [How-To-Check](https://github.com/mahmoud-eslami/bottom-animation/blob/master/HOWTOUSE.md) 
+Check here [How-To-Use](https://github.com/mahmoud-eslami/bottom-animation/blob/master/HOWTOUSE.md) 
 
 ## Contributions:
 
