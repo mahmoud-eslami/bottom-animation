@@ -1,5 +1,3 @@
-![pic](https://raw.githubusercontent.com/mahmoud-eslami/bottom_animation/master/files/BOTTOM%20ANIMATION.png)
-
 # Animated Bottom Navigation
 
 [![pub package](https://img.shields.io/pub/v/bottom_animation?color=green&style=flat-square)](https://pub.dev/packages/bottom_animation)
