@@ -1,67 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:bottom_animation/bottom_animation.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var cIndex;
-  @override
-  void initState() {
-    cIndex = 0;
-    super.initState();
-  }
+class BottomAnimation extends StatefulWidget {
+  const BottomAnimation({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'example',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        bottomNavigationBar: Cbn(),
-      ),
-    );
-  }
+  _BottomAnimationState createState() => _BottomAnimationState();
 }
 
-class WidgetModel {
-  final double width, height;
-  final double xDistance, yDistance;
-
-  WidgetModel({
-    required this.yDistance,
-    required this.height,
-    required this.width,
-    required this.xDistance,
-  });
-
-  @override
-  String toString() {
-    return 'WidgetModel(width: $width, height: $height, xDistance: $xDistance, yDistance: $yDistance)';
-  }
-}
-
-class Cbn extends StatefulWidget {
-  const Cbn({Key? key}) : super(key: key);
-
-  @override
-  _CbnState createState() => _CbnState();
-}
-
-class _CbnState extends State<Cbn> {
+class _BottomAnimationState extends State<BottomAnimation> {
   late List<GlobalKey> iconKeys;
   bool showFloating = false;
   int selectedItem = 0;
-  List<WidgetModel> widgetsInfo = [];
+  List<WidgetInfoModel> widgetsInfo = [];
   Orientation? currentOrientation;
 
   @override
@@ -91,7 +42,7 @@ class _CbnState extends State<Cbn> {
       final RenderBox widgetBox =
           iconKeys[i].currentContext!.findRenderObject() as RenderBox;
       widgetsInfo.add(
-        WidgetModel(
+        WidgetInfoModel(
           height: widgetBox.size.height,
           width: widgetBox.size.width,
           xDistance: iconPosition.dx,
@@ -107,7 +58,7 @@ class _CbnState extends State<Cbn> {
   @override
   Widget build(BuildContext context) {
     var barBgSize = 80.0;
-    var floatingIconHeight = 0.0;
+    var floatingIconHeight = 50.0;
     var floatingButtonHorizontalPadding = 40.0;
 
     return OrientationBuilder(builder: (context, orientation) {
@@ -128,13 +79,10 @@ class _CbnState extends State<Cbn> {
             if (showFloating)
               AnimatedPositioned(
                 duration: Duration(milliseconds: 300),
-                top: (barBgSize -
-                        (widgetsInfo[selectedItem].height +
-                            floatingIconHeight)) /
-                    2,
+                top: (barBgSize - floatingIconHeight) / 2,
                 width: widgetsInfo[selectedItem].width +
                     floatingButtonHorizontalPadding,
-                height: widgetsInfo[selectedItem].height + floatingIconHeight,
+                height: floatingIconHeight,
                 left: widgetsInfo[selectedItem].xDistance -
                     (floatingButtonHorizontalPadding / 2),
                 curve: Curves.ease,
